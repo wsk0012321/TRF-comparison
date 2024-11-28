@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[46]:
-
-
 import torch
 import re
 import transformers
@@ -272,4 +266,3 @@ expanded_data = align_with_eeg(df)
     #pickle.dump(expanded_data, file)
 with open(r'E:/PhD/data/Di_Liberto/value_pearson.pkl','wb') as file:
     #pickle.dump(expanded_data, file)
-
