@@ -21,20 +21,20 @@ Please download and install the mTRF Toolbox [3] and EEGLAB [4]
 Use addpath() function to register the scripts under the path evaluation/tools/
 
 ## Run (in refined way)
-1. EEG data preparation:
- (1). Download the raw EEG and stimuli data.
+1. EEG data preparation: <br>
+ (1). Download the raw EEG and stimuli data. <br>
  (2). Run the EEG_conversion.py in the folder eeg_preprocessing on the raw data. <br>
  (3). In Matlab, manually load every processed file of one run and remove files that contain excessive contamination with visual checking. <br>
  (4). Apply bandpass_filter.m to the data and interpolate contaminated channels manually with EEGLAB. Make sure that the value ids is equal to your number of loaded files. <br>
  (5). Use savefiles.m and specify the index of run.
 
-2. Modelling and evaluation:
+2. Modelling and evaluation: <br>
  (1). In Matlab, set the variable eegPath to your EEG directory and set norma to 2 and nfold to 8. <br>
  (2). Run model_trf.m with four .mat files in the folder ./stimuli/ Please use the default parameters and modify the paths. <br>
  (3). Repeat the step 2 while changing the variable scale from 0 to 2. You will obtain 12 models. <br>
 
-3. Statistic analysis:
- (1). In R, run analysis.R on the outputs stored in the folder ./statistics/
+3. Statistic analysis: <br>
+ (1). In R, run analysis.R on the outputs stored in the folder ./statistics/ <br>
 
 [1] Broderick M P, Anderson A J, Di Liberto G M, et al. Electrophysiological correlates of semantic dissimilarity reflect the comprehension of natural, narrative speech[J]. Current Biology, 2018, 28(5): 803-809. e3. <br>
 [2] Brodbeck C, Das P, Kulasingham J P, et al. Eelbrain: A Python toolkit for time-continuous analysis with temporal response functions. BioRxiv, 2021.08. 01.454687[EB/OL].(2021) <br>
