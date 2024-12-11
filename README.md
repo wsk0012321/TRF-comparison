@@ -9,15 +9,15 @@ It is highly recommended to import our preprocessed data and execute the in a re
 Semantic dissimilarity calculated and arranged can be found under the folder in formats .csv, .pkl and .mat. To perform TRF in Matlab, you can load the mat files directly. Notice that files of Run 9, 10, 16, 17 are removed because they contain words not captured in the word2vec model.
 
 ## Enviroment
-for Python scripts:
+for Python scripts: <br>
 pip install -r requirements.txt
 
-for R scripts:
-install.packages('dplyr')
+for R scripts: <br>
+install.packages('dplyr') <br>
 install.packages('ggplot2')
 
-for Matlab scripts:
-Please download and install the mTRF Toolbox [3] and EEGLAB [4]
+for Matlab scripts: <br>
+Please download and install the mTRF Toolbox [3] and EEGLAB [4] <br>
 Use addpath() function to register the scripts under the path evaluation/tools/
 
 ## Run (in refined way)
