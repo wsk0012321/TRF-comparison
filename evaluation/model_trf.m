@@ -9,6 +9,7 @@ function [model,dataTable] = model_trf(eegPath,stimPath,fs,Dir,channel,tmin,tmax
     %       2: scaling only
     %       3: scaling + zscore
     %       others: skip normalization
+    %       default value is 2
     %
     % Scaling of stimulus: (scale)
     %       0: linear
