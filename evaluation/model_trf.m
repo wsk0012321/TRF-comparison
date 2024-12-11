@@ -3,14 +3,14 @@ function [model,dataTable] = model_trf(eegPath,stimPath,fs,Dir,channel,tmin,tmax
     % Default directories are as follow:
     % eegPath = 'E:/PhD/data/Di_Liberto/transformed/Natural Speech/EEG/'
     % stimPath = 'E:/PhD/data/Di_Liberto/transformed/Natural Speech/stimuli/value_cosine_bert.mat'
-    % Normalization strategies:
+    % Normalization strategies: (norma)
     %       0: zscore
     %       1: min-max
     %       2: scaling only
     %       3: scaling + zscore
     %       others: skip normalization
     %
-    %Scaling of stimulus:
+    % Scaling of stimulus: (scale)
     %       0: linear
     %       1: log 
     %       2: power law
@@ -140,5 +140,5 @@ function [model,dataTable] = model_trf(eegPath,stimPath,fs,Dir,channel,tmin,tmax
     end 
 
     dataTable = array2table(dataMatrix, 'VariableNames', colnames);
-    writetable(dataTable,'E:/PhD/data/Di_Liberto/transformed/Natural Speech/statistics/powlaw_bert_cosine.csv');
+    writetable(dataTable,'E:/PhD/data/Di_Liberto/transformed/Natural Speech/statistics/powlaw_w2v_cosine.csv');
 end
