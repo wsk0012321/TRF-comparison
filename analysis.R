@@ -22,14 +22,60 @@ readtables <- function(directory) {
   return(frame)
 } 
 
+conversion <- function(df) {
+  mean_acc = c()
+  for (i in 1:nrow(df)) {
+    sum_acc = 0
+    for (n in 1:3) {
+      if (df[i,n] < 0) {
+        df[i,n] = abs(df[i,n]) # convert each negative value to a positive one
+      }
+      sum_acc = sum_acc + df[i,n]
+    }
+    mean_acc = c(mean_acc,sum_acc/3) # compute the mean accuracy over three channels
+  }
+  df = cbind(df,mean_acc)
+  
+  return(df)
+}
+
 directory <- "E:/PhD/data/Di_Liberto/transformed/Natural Speech/statistics/"
 df <- readtables(directory)
+df <- conversion(df)
 
+# channel Cz
 aov_Cz <- aov(Cz ~ scalar * embedding * formula, data=df)
 summary(aov_Cz)
-
-aov_Pz <- aov(Cz ~ scalar * embedding * formula, data=df)
+# channel Pz
+aov_Pz <- aov(Pz ~ scalar * embedding * formula, data=df)
 summary(aov_Cz)
-
-aov_Fz <- aov(Cz ~ scalar * embedding * formula, data=df)
+# channel Fz
+aov_Fz <- aov(Fz ~ scalar * embedding * formula, data=df)
 summary(aov_Cz)
+# averaged
+aov_mean <- aov(mean_acc ~ scalar * embedding * formula, data=df)
+summary(aov_mean)
+
+# effect of scalar
+df %>%
+  ggplot(aes(x=scalar,y=mean_acc)) +
+  geom_boxplot()+
+  geom_point()+
+  theme_bw()+
+  labs(title='Effect of scalar',x='scalar',y='accuracy')
+
+# effect of word embedding
+df %>%
+  ggplot(aes(x=embedding,y=mean_acc)) +
+  geom_boxplot()+
+  geom_point()+
+  theme_bw()+
+  labs(title='Effect of word embedding',x='scalar',y='accuracy')
+
+# effect of formula
+df %>%
+  ggplot(aes(x=formula,y=mean_acc)) +
+  geom_boxplot()+
+  geom_point()+
+  theme_bw()+
+  labs(title='Effect of similarity metrics',x='scalar',y='accuracy')
